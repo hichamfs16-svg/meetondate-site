@@ -4,51 +4,247 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Date — Less chatting. More dates.</title>
-<meta name="description" content="Date is the dating app where every profile shows the exact first date they want. Swipe on the plan, not just the face.">
+<meta name="description" content="Date is the dating app where every profile shows the exact first date they want. Match, confirm a real day and time, and meet. Launching in Porto, Portugal.">
+<meta property="og:title" content="Date — Less chatting. More dates.">
+<meta property="og:description" content="Every profile shows the exact first date they want. Swipe on the plan, not just the face.">
+<meta property="og:url" content="https://meetondate.app">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23E25822' d='M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#FAF6F0; --ink:#16130F; --muted:#6B6257; --ember:#E25822; --card:#FFFFFF; --border:#E8E0D5; }
+  :root {
+    --bg:#FAF6F0; --ink:#16130F; --muted:#6B6257; --faint:#9A9083;
+    --ember:#E25822; --ember-soft:#FCEDE6; --gold:#D9A441; --sage:#5F7A61;
+    --card:#FFFFFF; --border:#E8E0D5;
+  }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--ink); font-family:'Segoe UI', system-ui, -apple-system, sans-serif; line-height:1.6; }
-  .wrap { max-width:680px; margin:0 auto; padding:48px 24px 64px; }
-  .logo { font-size:44px; font-weight:800; letter-spacing:-1px; }
-  .logo .rose { color:var(--ember); }
-  h1 { font-size:30px; font-weight:800; margin:36px 0 12px; letter-spacing:-0.5px; }
-  .tagline { font-size:19px; color:var(--muted); margin-top:6px; }
-  .card { background:var(--card); border:1.5px solid var(--border); border-radius:18px; padding:22px 24px; margin-top:18px; }
-  .card h2 { font-size:16px; margin-bottom:6px; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:'Figtree','Segoe UI',system-ui,sans-serif; line-height:1.6; }
+  .wrap { max-width:1020px; margin:0 auto; padding:0 24px; }
+
+  /* Header */
+  header { position:sticky; top:0; background:rgba(250,246,240,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); z-index:10; }
+  .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+  .brand { display:flex; align-items:center; gap:8px; font-size:24px; font-weight:800; letter-spacing:-0.5px; color:var(--ink); text-decoration:none; }
+  .brand svg { width:26px; height:26px; }
+  .nav-right { display:flex; align-items:center; gap:18px; }
+  .nav-link { color:var(--muted); text-decoration:none; font-weight:600; font-size:14.5px; }
+  .nav-link:hover { color:var(--ink); }
+  .lang { display:flex; border:1.5px solid var(--border); border-radius:999px; overflow:hidden; }
+  .lang button { border:0; background:transparent; font-family:inherit; font-weight:700; font-size:12.5px; padding:5px 12px; cursor:pointer; color:var(--muted); }
+  .lang button.on { background:var(--ink); color:#fff; }
+
+  /* Hero */
+  .hero { display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; padding:64px 0 48px; }
+  h1 { font-size:52px; line-height:1.05; font-weight:800; letter-spacing:-1.5px; }
+  h1 .accent { color:var(--ember); }
+  .hero-sub { font-size:19px; color:var(--muted); margin-top:18px; max-width:44ch; }
+  .hero-cta { margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .btn { display:inline-block; background:var(--ember); color:#fff; font-weight:700; font-size:15.5px; padding:13px 24px; border-radius:999px; text-decoration:none; box-shadow:0 6px 18px rgba(226,88,34,0.28); }
+  .btn:hover { filter:brightness(1.05); }
+  .soon { font-size:13.5px; color:var(--faint); font-weight:600; }
+
+  /* Phone mockup */
+  .phone-col { display:flex; justify-content:center; }
+  .phone { width:290px; border-radius:42px; background:#111; padding:10px; box-shadow:0 30px 60px rgba(22,19,15,0.25); }
+  .screen { border-radius:34px; overflow:hidden; background:var(--bg); }
+  .shot { position:relative; height:360px; background:linear-gradient(145deg,#C98A6B 0%,#8A5A44 55%,#5C3A2E 100%); }
+  .shot-notch { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:86px; height:22px; border-radius:999px; background:#111; }
+  .shot-name { position:absolute; left:18px; bottom:118px; color:#fff; font-weight:800; font-size:22px; text-shadow:0 2px 8px rgba(0,0,0,0.35); }
+  .shot-name small { font-weight:600; font-size:14px; display:block; opacity:0.9; }
+  .datecard { position:absolute; left:12px; right:12px; bottom:12px; background:#FFFDF9; border-radius:16px; padding:12px 14px; box-shadow:0 8px 22px rgba(0,0,0,0.22); }
+  .datecard .dc-top { display:flex; align-items:center; gap:7px; font-weight:800; font-size:14.5px; }
+  .datecard .dc-top svg { width:16px; height:16px; }
+  .dc-when { color:var(--muted); font-size:12.5px; font-weight:600; margin-top:1px; }
+  .dc-chips { display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
+  .chip { font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; background:var(--ember-soft); color:var(--ember); }
+  .chip.alt { background:#EFF3EE; color:var(--sage); }
+  .dc-note { font-size:12px; color:var(--muted); font-style:italic; margin-top:8px; }
+
+  /* Sections */
+  section { padding:44px 0; }
+  .kicker { font-size:12.5px; font-weight:800; letter-spacing:1.6px; color:var(--ember); text-transform:uppercase; }
+  h2 { font-size:32px; font-weight:800; letter-spacing:-0.8px; margin-top:6px; }
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:26px; }
+  .card { background:var(--card); border:1.5px solid var(--border); border-radius:20px; padding:24px; }
+  .card .ic { width:42px; height:42px; border-radius:12px; background:var(--ember-soft); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+  .card .ic svg { width:22px; height:22px; }
+  .card h3 { font-size:17px; font-weight:800; margin-bottom:6px; }
   .card p { font-size:14.5px; color:var(--muted); }
-  .links { margin-top:36px; font-size:15px; }
-  .links a { color:var(--ember); text-decoration:none; font-weight:600; margin-right:18px; }
-  .links a:hover { text-decoration:underline; }
-  .foot { margin-top:40px; font-size:13px; color:var(--muted); }
-  .foot a { color:var(--muted); }
+
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:26px; }
+  .step { border-left:3px solid var(--ember); padding:4px 0 4px 18px; }
+  .step .n { font-weight:800; color:var(--ember); font-size:13px; letter-spacing:1px; }
+  .step h3 { font-size:18px; font-weight:800; margin:2px 0 4px; }
+  .step p { font-size:14.5px; color:var(--muted); }
+
+  .cta-band { background:var(--ink); border-radius:24px; padding:40px; display:flex; align-items:center; justify-content:space-between; gap:24px; margin:28px 0 8px; }
+  .cta-band h2 { color:#fff; font-size:26px; margin:0; }
+  .cta-band p { color:#CFC6BA; font-size:14.5px; margin-top:4px; }
+
+  footer { border-top:1.5px solid var(--border); margin-top:40px; padding:28px 0 40px; }
+  .foot-row { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .foot-links { display:flex; gap:18px; }
+  .foot-links a { color:var(--muted); text-decoration:none; font-size:14px; font-weight:600; }
+  .foot-links a:hover { color:var(--ink); }
+  .foot-copy { color:var(--faint); font-size:13px; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns:1fr; padding:40px 0 28px; text-align:center; }
+    .hero-sub { margin-left:auto; margin-right:auto; }
+    .hero-cta { justify-content:center; }
+    .phone-col { order:2; margin-top:28px; }
+    h1 { font-size:38px; }
+    .cards, .steps { grid-template-columns:1fr; }
+    .cta-band { flex-direction:column; text-align:center; }
+    .nav-link.hide-m { display:none; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="logo">Date<span class="rose">.</span></div>
-  <h1>Less chatting. More dates.</h1>
-  <p class="tagline">Every profile shows the exact first date they want. Swipe on the plan, not just the face.</p>
 
-  <div class="card">
-    <h2>Match. Confirm. Meet.</h2>
-    <p>Your match opens with the date already on the table. One tap proposes it, one tap locks it in — day, time, and who pays, all agreed before you meet.</p>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#E25822" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z"/></svg>
+      Date
+    </a>
+    <div class="nav-right">
+      <a class="nav-link hide-m" href="privacy.html" data-en="Privacy" data-pt="Privacidade">Privacy</a>
+      <a class="nav-link hide-m" href="terms.html" data-en="Terms" data-pt="Termos">Terms</a>
+      <a class="nav-link" href="mailto:hello@meetondate.app" data-en="Contact" data-pt="Contacto">Contact</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button id="lang-en" onclick="setLang('en')">EN</button>
+        <button id="lang-pt" onclick="setLang('pt')">PT</button>
+      </div>
+    </div>
   </div>
-  <div class="card">
-    <h2>Safety built in.</h2>
-    <p>Verified badges, public venues, a safety checklist before every date, and a date plan you can share with a friend.</p>
-  </div>
-  <div class="card">
-    <h2>Coming soon to Android and iOS.</h2>
-    <p>Launching first in Porto, Portugal. Questions? <a href="mailto:hello@meetondate.app" style="color:var(--ember)">hello@meetondate.app</a></p>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1 data-en="Less chatting.<br><span class=&quot;accent&quot;>More dates.</span>" data-pt="Menos conversa.<br><span class=&quot;accent&quot;>Mais encontros.</span>">Less chatting.<br><span class="accent">More dates.</span></h1>
+      <p class="hero-sub" data-en="Every profile shows the exact first date its owner wants. Swipe on the plan, not just the face — then lock in a real day and time." data-pt="Cada perfil mostra o primeiro encontro exato que a pessoa quer. Faz swipe no plano, não só na cara — e marca logo dia e hora a sério.">Every profile shows the exact first date its owner wants. Swipe on the plan, not just the face — then lock in a real day and time.</p>
+      <div class="hero-cta">
+        <a class="btn" href="mailto:hello@meetondate.app?subject=Early%20access" data-en="Get early access" data-pt="Acesso antecipado">Get early access</a>
+        <span class="soon" data-en="Coming soon to Android and iOS · Launching in Porto" data-pt="Em breve para Android e iOS · Lançamento no Porto">Coming soon to Android and iOS · Launching in Porto</span>
+      </div>
+    </div>
+    <div class="phone-col">
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="shot">
+            <div class="shot-notch"></div>
+            <div class="shot-name">Sofia <small data-en="27 · 3 km away" data-pt="27 · a 3 km">27 · 3 km away</small></div>
+            <div class="datecard">
+              <div class="dc-top">
+                <svg viewBox="0 0 24 24"><path fill="#E25822" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z"/></svg>
+                <span data-en="Dinner" data-pt="Jantar">Dinner</span>
+              </div>
+              <div class="dc-when" data-en="This Friday evening · We split" data-pt="Esta sexta à noite · Dividimos">This Friday evening · We split</div>
+              <div class="dc-chips">
+                <span class="chip" data-en="Romantic" data-pt="Romântico">Romantic</span>
+                <span class="chip" data-en="Foodie" data-pt="Gastronómico">Foodie</span>
+                <span class="chip alt" data-en="Public spot" data-pt="Sítio público">Public spot</span>
+              </div>
+              <div class="dc-note" data-en="“I know a rooftop with the best sunset in Porto.”" data-pt="“Conheço um rooftop com o melhor pôr do sol do Porto.”">“I know a rooftop with the best sunset in Porto.”</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
-    <a href="mailto:hello@meetondate.app">Contact</a>
+  <section>
+    <div class="kicker" data-en="Why Date" data-pt="Porquê o Date">Why Date</div>
+    <h2 data-en="Built for meeting, not endless texting" data-pt="Feito para encontros, não para conversa infinita">Built for meeting, not endless texting</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path fill="#E25822" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z"/></svg></div>
+        <h3 data-en="The date is the profile" data-pt="O encontro é o perfil">The date is the profile</h3>
+        <p data-en="Dinner Friday? A museum on Sunday afternoon? Everyone says upfront what they actually want — you swipe on the plan." data-pt="Jantar na sexta? Museu no domingo à tarde? Toda a gente diz à partida o que quer mesmo — fazes swipe no plano.">Dinner Friday? A museum on Sunday afternoon? Everyone says upfront what they actually want — you swipe on the plan.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path fill="#E25822" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2Z"/></svg></div>
+        <h3 data-en="One tap locks it in" data-pt="Um toque e está marcado">One tap locks it in</h3>
+        <p data-en="Your match opens with the date on the table. Pick the real day and time together — no three weeks of “so… when?”" data-pt="O teu match abre com o encontro já na mesa. Escolhem juntos o dia e a hora — sem três semanas de “então… quando?”">Your match opens with the date on the table. Pick the real day and time together — no three weeks of “so… when?”</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24"><path fill="#E25822" d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4Zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.58L18 9l-8 8Z"/></svg></div>
+        <h3 data-en="Safety is built in" data-pt="Segurança incluída">Safety is built in</h3>
+        <p data-en="Human-reviewed verification badges, public venues, a pre-date safety checklist, and a date plan you can share with a friend." data-pt="Selos de verificação revistos por humanos, sítios públicos, checklist de segurança antes do encontro e um plano que podes partilhar com uma amiga.">Human-reviewed verification badges, public venues, a pre-date safety checklist, and a date plan you can share with a friend.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker" data-en="How it works" data-pt="Como funciona">How it works</div>
+    <h2 data-en="Three steps to a real date" data-pt="Três passos até um encontro real">Three steps to a real date</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n" data-en="STEP 1" data-pt="PASSO 1">STEP 1</div>
+        <h3 data-en="Match" data-pt="Match">Match</h3>
+        <p data-en="Swipe on people whose date plan fits yours. Date Fit highlights the ones that line up." data-pt="Faz swipe em pessoas cujo plano combina com o teu. O Date Fit destaca os que encaixam.">Swipe on people whose date plan fits yours. Date Fit highlights the ones that line up.</p>
+      </div>
+      <div class="step">
+        <div class="n" data-en="STEP 2" data-pt="PASSO 2">STEP 2</div>
+        <h3 data-en="Confirm" data-pt="Confirmar">Confirm</h3>
+        <p data-en="One tap proposes the date, one tap accepts. Day, time, who pays — agreed before you meet." data-pt="Um toque propõe o encontro, outro aceita. Dia, hora, quem paga — combinado antes de se verem.">One tap proposes the date, one tap accepts. Day, time, who pays — agreed before you meet.</p>
+      </div>
+      <div class="step">
+        <div class="n" data-en="STEP 3" data-pt="PASSO 3">STEP 3</div>
+        <h3 data-en="Meet" data-pt="Encontrar">Meet</h3>
+        <p data-en="Calendar reminder, flowers shortcut, safety checklist — and an actual evening out." data-pt="Lembrete no calendário, atalho para flores, checklist de segurança — e uma saída a sério.">Calendar reminder, flowers shortcut, safety checklist — and an actual evening out.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cta-band">
+      <div>
+        <h2 data-en="Launching first in Porto" data-pt="Primeiro lançamento: Porto">Launching first in Porto</h2>
+        <p data-en="Want in early, or want to help test? Say hello." data-pt="Queres entrar cedo ou ajudar a testar? Diz olá.">Want in early, or want to help test? Say hello.</p>
+      </div>
+      <a class="btn" href="mailto:hello@meetondate.app?subject=Porto%20launch" data-en="hello@meetondate.app" data-pt="hello@meetondate.app">hello@meetondate.app</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <a class="brand" href="/" style="font-size:19px">
+      <svg viewBox="0 0 24 24" style="width:20px;height:20px" aria-hidden="true"><path fill="#E25822" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z"/></svg>
+      Date
+    </a>
+    <div class="foot-links">
+      <a href="privacy.html" data-en="Privacy Policy" data-pt="Política de Privacidade">Privacy Policy</a>
+      <a href="terms.html" data-en="Terms" data-pt="Termos">Terms</a>
+      <a href="mailto:hello@meetondate.app" data-en="Contact" data-pt="Contacto">Contact</a>
+    </div>
+    <div class="foot-copy">© 2026 MeetOnDate · meetondate.app</div>
   </div>
-  <p class="foot">© 2026 Date · meetondate.app</p>
-</div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      var v = el.getAttribute('data-' + lang);
+      if (v == null) return;
+      if (v.indexOf('<') !== -1) el.innerHTML = v; else el.textContent = v;
+    });
+    document.getElementById('lang-en').className = lang === 'en' ? 'on' : '';
+    document.getElementById('lang-pt').className = lang === 'pt' ? 'on' : '';
+    try { localStorage.setItem('site-lang', lang); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('site-lang'); } catch (e) {}
+  var auto = (navigator.language || '').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+  setLang(saved === 'pt' || saved === 'en' ? saved : auto);
+</script>
+
 </body>
 </html>
