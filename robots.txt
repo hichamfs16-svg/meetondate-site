@@ -1,2 +1,6 @@
 User-agent: *
+Allow: /child-safety.html
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /delete-account.html
 Disallow: /
