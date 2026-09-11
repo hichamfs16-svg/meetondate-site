@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Indexable on purpose. The app is published, so the policy has to be
+     reachable: Google fetches it, Apple links it, and the person who wants to
+     delete their account has already removed the app and will search for this
+     page. robots.txt keeps the homepage out of the index; these do not belong
+     there with it. -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Date</title>
 <meta name="description" content="Privacy Policy for the Date app (meetondate.app).">
-<meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23E25822' d='M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,95 +23,61 @@
   .logo a { color:var(--ink); text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
   .logo svg { width:24px; height:24px; }
   h1 { font-size:28px; font-weight:800; margin:26px 0 4px; letter-spacing:-0.5px; }
-  .updated { font-size:13px; color:var(--muted); margin-bottom:8px; }
-  .langs { font-size:14px; margin-bottom:26px; }
-  .langs a { color:var(--ember); text-decoration:none; font-weight:600; }
+  .updated { font-size:13px; color:var(--muted); margin-bottom:26px; }
   h2 { font-size:17px; margin:22px 0 6px; }
   p { font-size:15px; color:var(--muted); margin-bottom:4px; }
+  ol { color:var(--muted); font-size:15px; margin:10px 0 10px 20px; }
+  li { margin-bottom:8px; }
+  .card { background:#FFFDF9; border:1.5px solid var(--border); border-radius:14px; padding:20px 22px; margin-top:18px; }
   hr { border:none; border-top:1.5px solid var(--border); margin:40px 0 8px; }
-  a.mail { color:var(--ember); }
+  a { color:var(--ember); }
+  .foot { font-size:13px; color:#9A9083; margin-top:8px; }
+  .foot a { color:#9A9083; text-decoration:none; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="logo"><a href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#E25822" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z"/></svg>Date</a></div>
+  <div class="logo"><a href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#E25822" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z"/></svg> Date</a></div>
 
-  <h1 id="en">Privacy Policy</h1>
-  <p class="updated">Last updated: July 18, 2026</p>
-  <p class="langs"><a href="#en">English</a> · <a href="#pt">Português</a></p>
-
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: August 4, 2026</p>
+  <h2>Who is responsible</h2>
+  <p>Date is run by Hicham Kacimi, operating as MeetOnDate, in Porto, Portugal — the data controller for everything described here. For any privacy question or request, write to <a href="mailto:hello@meetondate.app">hello@meetondate.app</a> — a real person reads it.</p>
   <h2>What we collect</h2>
-  <p>What you give us when building your profile: name, birthday, gender, height, photos, bio, what you are here for, interests, talking topics, how you act on a date, languages, and your Perfect Date ideas. Plus your email address when you sign up, and the messages, photos, videos and voice notes you send in chats.</p>
-
+  <p>What you give us when building your profile: name, birthday, gender, height, photos, bio, what you are here for, interests, talking topics, how you act on a date, languages, lifestyle answers, and your Perfect Date ideas. Plus your email address when you sign up, and the messages, photos, videos and voice notes you send in chats. We also record which profiles you liked or passed, so the deck does not show you the same person twice.</p>
+  <h2>Why we are allowed to use it</h2>
+  <p>Most of it because we cannot run the app without it: showing your profile to the people you asked to be shown to is the service you signed up for. Location and notifications run on your permission, which you can withdraw at any time in your phone settings. Safety work — reports, blocks, bans and the limits that stop spam — runs on our legitimate interest in keeping people safe, and on our legal duty to act on illegal content. We never use your data for advertising, because there is none.</p>
   <h2>Location</h2>
-  <p>We use your approximate location to show people nearby and how far away they are. Other people only ever see a distance in kilometres — never your address or exact position. Travel mode uses a city you choose instead, and snaps back to your real location automatically after a week.</p>
-
+  <p>We use your approximate location to show people nearby and how far away they are. Other people only ever see a distance in kilometres — never your address or exact position. Travel mode uses a city you choose instead, and snaps back to your real location automatically after a week. The app works without location: you simply see no distances.</p>
+  <h2>Your photos carry nothing hidden</h2>
+  <p>Cameras attach invisible information to photos, including the exact spot where the picture was taken. Every photo you upload is resized and re-encoded before it leaves your phone, which removes that. The month and year you enter for a photo are the only date information we keep, and you enter those yourself.</p>
   <h2>Private by design</h2>
-  <p>Some things in Date are only ever visible to you: who liked or commented on your photos, how many people viewed your profile and date ideas, and your profile rating (which is calculated on your device and never stored anywhere). Hiding your age hides it from everyone.</p>
-
+  <p>Some things in Date are only ever visible to you: who liked or commented on your photos, who liked or rated your profile, how many people viewed your profile and date plans, and your profile strength (which is calculated on your device and never stored anywhere). Ratings are private in both directions: nobody but you can see the ratings you receive, there is no public score or average, and the person who left one is always named to you. Hiding your age hides it from everyone.</p>
+  <h2>Incognito</h2>
+  <p>With incognito on, you disappear from the deck for everyone except the people you have liked. It changes who can see your profile, not what we store — your profile stays exactly as it was, and turning incognito off puts you back.</p>
   <h2>Verification selfie</h2>
   <p>The verification selfie is used to check you match your profile photos, then deleted. It is never shown to anyone and never becomes part of your profile.</p>
-
   <h2>Messages and media</h2>
   <p>Chats are stored so we can deliver them and keep your history. View-once photos and videos are permanently deleted after the receiver opens them. Deleting your account removes your conversations.</p>
-
+  <h2>Notifications</h2>
+  <p>If you turn on notifications, your phone gives us an address to send them to. It is used for nothing else, it is deleted when you sign out, and it is deleted automatically if the app has not opened on that phone for ninety days. You can turn each kind of notification off inside the app, and all of them off in your phone settings.</p>
   <h2>Safety reports and blocks</h2>
-  <p>When you report someone we store the report to act on it. When you block someone we store the block so you stay invisible to each other. The blocked or reported person is never told who did it.</p>
-
+  <p>When you report someone we store the report to act on it. When you block someone we store the block so you stay invisible to each other. The blocked or reported person is never told who did it. Reports are the one thing that survives an account being deleted — otherwise anyone reported for abuse could erase the record by leaving and signing up again. What survives is the report and the first names on it, not the deleted person’s profile.</p>
+  <h2>How long we keep things</h2>
+  <p>Your profile, photos and messages: until you delete your account, which removes them immediately and permanently. Notification addresses: until you sign out, or ninety days without opening the app. Safety reports: kept after deletion, as described above. Crash reports: kept by Sentry for ninety days and contain no profile information.</p>
   <h2>Where your data lives</h2>
   <p>Your data is stored with Supabase on servers in the European Union (Ireland) and protected with per-user access rules: the database itself refuses to hand your private data to anyone but you.</p>
-
   <h2>What we share</h2>
-  <p>We do not sell your data. There is no advertising and no data brokers. The only third parties involved are the services that run the app itself — hosting and message delivery (Supabase, in the EU), crash reporting (Sentry, also in the EU), GIF search (GIPHY, which only receives what you type into the GIF box), Google sign-in if you choose it, and later payments — and each only handles what it needs to do its job.</p>
-
+  <p>We do not sell your data. There is no advertising and no data brokers. The only third parties involved are the services that run the app itself — hosting and message delivery (Supabase, in the EU), notification delivery (Expo), crash reporting (Sentry, also in the EU), GIF search (GIPHY, which only receives what you type into the GIF box), Google sign-in if you choose it, and later payments — and each only handles what it needs to do its job. Where a service sits outside the EU, the transfer runs on the European Commission’s standard contractual clauses.</p>
   <h2>Your rights</h2>
-  <p>You can see and correct everything on your profile from the app, and permanently delete your account — with everything attached to it — from your Profile tab at any time. For a copy of your data, write to <a class="mail" href="mailto:hello@meetondate.app">hello@meetondate.app</a>. If you are in the EU, GDPR applies to all of this.</p>
-
+  <p>You can see and correct everything on your profile from the app, and permanently delete your account — with everything attached to it — from your Profile tab, or at meetondate.app/delete-account, at any time. You can also ask us for a copy of your data in a portable form, ask us to correct or delete something specific, object to how we use it, or withdraw a permission you gave. Write to <a href="mailto:hello@meetondate.app">hello@meetondate.app</a> and we will answer within a month. If you are in the EU and you think we have got it wrong, you can complain to your national data protection authority — in Portugal that is the CNPD, at cnpd.pt.</p>
+  <h2>Nobody under 18</h2>
+  <p>Date is for adults. We do not knowingly collect anything from anyone under 18, and an account we find to belong to someone underage is deleted along with everything on it.</p>
   <h2>Changes and contact</h2>
-  <p>If this policy changes in a meaningful way, we will tell you in the app first. Anything unclear, ask: <a class="mail" href="mailto:hello@meetondate.app">hello@meetondate.app</a>.</p>
+  <p>If this policy changes in a meaningful way, we will tell you in the app first. Anything unclear, ask: <a href="mailto:hello@meetondate.app">hello@meetondate.app</a>.</p>
 
   <hr>
-
-  <h1 id="pt" lang="pt">Política de Privacidade</h1>
-  <p class="updated" lang="pt">Última atualização: 18 de julho de 2026</p>
-
-  <div lang="pt">
-  <h2>O que recolhemos</h2>
-  <p>O que nos dás ao construir o teu perfil: nome, data de nascimento, género, altura, fotos, bio, o que procuras, interesses, temas de conversa, como és num encontro, línguas e as tuas ideias de Encontro Perfeito. Mais o teu endereço de email no registo, e as mensagens, fotos, vídeos e notas de voz que envias nas conversas.</p>
-
-  <h2>Localização</h2>
-  <p>Usamos a tua localização aproximada para mostrar pessoas perto e a que distância estão. As outras pessoas só veem uma distância em quilómetros — nunca a tua morada ou posição exata. O modo viagem usa uma cidade à tua escolha e volta automaticamente à tua localização real ao fim de uma semana.</p>
-
-  <h2>Privado por definição</h2>
-  <p>Algumas coisas no Date só tu consegues ver: quem gostou ou comentou as tuas fotos, quantas pessoas viram o teu perfil e as tuas ideias, e a avaliação do teu perfil (calculada no teu dispositivo e nunca guardada em lado nenhum). Esconder a idade esconde-a de toda a gente.</p>
-
-  <h2>Selfie de verificação</h2>
-  <p>A selfie de verificação serve para confirmar que correspondes às fotos do teu perfil e é depois eliminada. Nunca é mostrada a ninguém e nunca passa a fazer parte do teu perfil.</p>
-
-  <h2>Mensagens e média</h2>
-  <p>As conversas são guardadas para as entregarmos e manter o teu histórico. Fotos e vídeos de ver uma vez são eliminados permanentemente depois de quem recebe os abrir. Eliminar a conta remove as tuas conversas.</p>
-
-  <h2>Chamadas</h2>
-  <p>As chamadas de voz e vídeo ligam diretamente entre os vossos dispositivos — não gravamos nem guardamos o que é dito ou mostrado. Guardamos apenas o registo que vês na conversa: quem ligou, quando e durante quanto tempo.</p>
-
-  <h2>Denúncias e bloqueios</h2>
-  <p>Quando denuncias alguém, guardamos a denúncia para agir sobre ela. Quando bloqueias alguém, guardamos o bloqueio para ficarem invisíveis um ao outro. A pessoa bloqueada ou denunciada nunca sabe quem o fez.</p>
-
-  <h2>Onde os teus dados vivem</h2>
-  <p>Os teus dados são guardados na Supabase, em servidores na União Europeia (Irlanda), e protegidos com regras de acesso por utilizador: a própria base de dados recusa entregar os teus dados privados a quem não sejas tu.</p>
-
-  <h2>O que partilhamos</h2>
-  <p>Não vendemos os teus dados. Não há publicidade nem corretores de dados. Os únicos terceiros envolvidos são os serviços que fazem a app funcionar — alojamento e entrega de mensagens (Supabase, na UE), relatórios de erros (Sentry, também na UE), pesquisa de GIFs (GIPHY, que só recebe o que escreves na caixa de GIFs), início de sessão com Google se o escolheres e, mais tarde, pagamentos — e cada um só trata do que precisa para o seu trabalho.</p>
-
-  <h2>Os teus direitos</h2>
-  <p>Podes ver e corrigir tudo no teu perfil a partir da app, e eliminar permanentemente a tua conta — com tudo o que lhe está associado — no separador Perfil, a qualquer momento. Para uma cópia dos teus dados, escreve para <a class="mail" href="mailto:hello@meetondate.app">hello@meetondate.app</a>. Se estás na UE, o RGPD aplica-se a tudo isto.</p>
-
-  <h2>Alterações e contacto</h2>
-  <p>Se esta política mudar de forma relevante, avisamos-te primeiro na app. Alguma dúvida, pergunta: <a class="mail" href="mailto:hello@meetondate.app">hello@meetondate.app</a>.</p>
-  </div>
-
-  <hr>
-  <p class="updated">© 2026 Date · meetondate.app</p>
+  <p class="foot"><a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="delete-account.html">Delete your account</a> · &copy; 2026 MeetOnDate</p>
 </div>
 </body>
 </html>
