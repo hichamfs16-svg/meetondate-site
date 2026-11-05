@@ -4,7 +4,14 @@
     <meta charset="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Date</title>
+    <title>Date</title><meta name="description" content="Date: swipe on the date, not just the face. Every profile shows a real plan the person wants to go on."><meta name="theme-color" content="#16130F"><style>
+  body{background:#16130F}
+  #boot{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#16130F;color:#fff;font:800 44px/1 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:-1px}
+  #boot i{display:block;width:26px;height:26px;border-radius:50%;border:3px solid rgba(255,255,255,.25);border-top-color:#E8503A;animation:bootspin .8s linear infinite}
+  @keyframes bootspin{to{transform:rotate(360deg)}}
+  body:has(#root > *) #boot{display:none}
+  @media (prefers-reduced-motion:reduce){#boot i{animation:none}}
+</style>
     <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
     <style id="expo-reset">
       /* These styles make the body full-height */
@@ -32,7 +39,7 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <!-- The root element for your Expo app. -->
-    <div id="root"></div>
-  <script src="/app/_expo/static/js/web/entry-6f0e2d2339c86a52562a197390dce67b.js" defer></script>
+    <div id="boot" role="status" aria-label="Loading">Date<span style="color:#E8503A">.</span><i></i></div><div id="root"></div>
+  <script src="/app/_expo/static/js/web/entry-b6f65a831c2ae2f6124fa506923f3893.js" defer></script>
 </body>
 </html>
