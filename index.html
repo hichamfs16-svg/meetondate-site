@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://meetondate.app/img/og.png">
 <link rel="canonical" href="https://meetondate.app/">
 <meta name="theme-color" content="#FAF6F0">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23E8503A' d='M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
   :root {
     --bg:#FAF6F0; --card:#FFFDF9; --ink:#16130F;
     --muted:rgba(22,19,15,0.58); --faint:rgba(22,19,15,0.34);
-    --ember:#E8503A; --ember-soft:rgba(232,80,58,0.10);
+    --ember:#E8503A; --ember-text:#C23A25; --ember-soft:rgba(232,80,58,0.10);
     --sage:#47693F; --sage-soft:rgba(127,160,122,0.18);
     --border:#E8E0D5;
   }
@@ -50,7 +50,7 @@
   header { padding:26px 0 0; }
   .bar { display:flex; align-items:center; justify-content:space-between; gap:16px; }
   .brand { display:inline-flex; align-items:center; gap:9px; font-size:24px; font-weight:800; letter-spacing:-0.5px; color:var(--ink); text-decoration:none; }
-  .brand svg { width:23px; height:23px; }
+  .brand img { width:30px; height:30px; display:block; }
   .bar nav { display:flex; gap:20px; font-size:14.5px; font-weight:600; }
   .bar nav a { color:var(--muted); text-decoration:none; }
   .bar nav a:hover { color:var(--ink); }
@@ -93,7 +93,7 @@
     background:#E8DFD3; aspect-ratio:323/572;
     box-shadow:0 22px 46px -26px rgba(22,19,15,0.4);
   }
-  .plate > img {
+  .plate picture, .plate > img {
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
     /* The app's photoMeta.focusY default — dead centre. At this card ratio a
        portrait photo barely crops, which is the whole reason it works. */
@@ -101,6 +101,7 @@
   }
   /* topScrim: 90px of rgba(10,8,6,0.35) fading out. bottomScrim: 62% tall,
      transparent to rgba(10,8,6,0.78) by 85%. */
+  .plate picture img { width:100%; height:100%; object-fit:cover; object-position:50% 50%; display:block; }
   .scrim-top {
     position:absolute; top:0; left:0; right:0; height:90px;
     background:linear-gradient(to bottom, rgba(10,8,6,0.35), transparent);
@@ -132,7 +133,7 @@
   }
   .headText { flex:1; min-width:0; }
   .headText .ttl { font-size:17px; font-weight:700; color:var(--ink); }
-  .headText .whn { font-size:13px; font-weight:600; color:var(--ember); margin-top:1px; }
+  .headText .whn { font-size:13px; font-weight:600; color:var(--ember-text); margin-top:1px; }
   .pays { background:rgba(22,19,15,0.06); border-radius:999px; padding:5px 10px; font-size:12px; font-weight:600; color:var(--ink); flex:none; }
   .chipsRow { display:flex; flex-wrap:wrap; gap:6px; }
   .chip {
@@ -156,7 +157,7 @@
   .sub { font-size:16.5px; color:var(--muted); margin-top:10px; max-width:34em; }
   .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:34px; }
   .step { background:var(--card); border:1.5px solid var(--border); border-radius:18px; padding:24px; }
-  .step .n { font-size:12px; font-weight:800; color:var(--ember); letter-spacing:1.2px; }
+  .step .n { font-size:12px; font-weight:800; color:var(--ember-text); letter-spacing:1.2px; }
   .step h3 { font-size:17.5px; font-weight:800; margin:9px 0 7px; letter-spacing:-0.3px; }
   .step p { font-size:14.5px; color:var(--muted); }
   .safety { display:grid; grid-template-columns:repeat(2,1fr); gap:14px 30px; margin-top:30px; }
@@ -192,7 +193,7 @@
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#E8503A" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14ZM5 8V6h14v2Zm7 11-.7-.6c-2.5-2.2-4-3.5-4-5.1A2.2 2.2 0 0 1 9.5 11a2.5 2.5 0 0 1 2 1 2.5 2.5 0 0 1 2-1 2.2 2.2 0 0 1 2.2 2.3c0 1.6-1.5 2.9-4 5.1Z"/></svg>Date</a>
+    <a class="brand" href="/"><img src="/icon-192.png" width="30" height="30" alt="" style="border-radius:8px">Date</a>
     <nav>
       <a href="#how">How it works</a>
       <a href="#safety">Safety</a>
@@ -211,7 +212,7 @@
         <a class="btn btn-quiet" href="/app/">Use it in your browser</a>
         <a class="btn btn-quiet" href="#how">See how it works</a>
       </div>
-      <p class="soon">Now on Google Play. Free, 18+, no ads. iPhone version coming soon.</p>
+      <p class="soon">Now on Google Play. 18+, no ads. iPhone version coming soon.</p>
     </div>
 
     <!-- The product's signature idea, drawn in the app's own materials. Not a
@@ -221,7 +222,7 @@
       <div class="deck">
         <div class="behind" aria-hidden="true"></div>
         <div class="plate">
-          <img src="img/leonor.jpg" alt="A profile card in the Date app: Sofia, and the dinner she wants to be taken on">
+          <picture><source srcset="img/leonor.webp" type="image/webp"><img src="img/leonor.jpg" width="720" height="1280" alt="A profile card in the Date app: Sofia, and the dinner she wants to be taken on"></picture>
           <div class="scrim-top"></div>
           <div class="scrim-bottom"></div>
           <div class="content">
