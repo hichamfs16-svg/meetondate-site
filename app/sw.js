@@ -1,7 +1,7 @@
 // Date web app: offline shell. Hashed build files are cached for good; pages
 // try the network first and fall back to the last copy. Anything that is not
 // this site (the database, sign-in, photos) is never touched.
-var V = 'date-20261107164805';
+var V = 'date-20261107165937';
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(V).then(function (c) { return c.add('/app/welcome/'); }).then(function () { return self.skipWaiting(); }));
 });
